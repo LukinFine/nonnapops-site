@@ -3,25 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nonna & Pops — Los Angeles</title>
+  <title>Nonna & Pops</title>
+  <meta property="og:title" content="Nonna & Pops" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@300;400;600;700;900&family=DM+Sans:wght@300;400;500&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
 
   <style>
     /* ── TOKENS ── */
     :root {
-      --red:        #c93432;
-      --red-dark:   #9e2220;
-      --green:      #5a8a4a;
-      --green-light:#80b266;
-      --cream:      #fdf4d8;
-      --cream-dark: #f5e8c0;
-      --tan:        #e3b5a3;
-      --tan-dark:   #c9906e;
-      --ink:        #1b180f;
-      --ink-soft:   #3a3228;
-      --white:      #fffef7;
+      --red:          #c8382a;
+      --red-dark:     #9c2519;
+      --red-light:    #e05a4a;
+      --green:        #1e6b57;
+      --green-dark:   #0f3d30;
+      --green-light:  #2d9478;
+      --gold:         #d4a435;
+      --gold-light:   #e8c26a;
+      --gold-pale:    #f5e4b0;
+      --cream:        #faf3e2;
+      --cream-dark:   #ede0c4;
+      --white:        #fdfaf3;
+      --ink:          #141a14;
+      --ink-soft:     #2c3628;
+      --ink-muted:    #4a5444;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,7 +39,6 @@
       overflow-x: hidden;
     }
 
-    /* Grain texture */
     body::before {
       content: '';
       position: fixed;
@@ -51,7 +55,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--ink);
+      background: var(--green-dark);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -64,18 +68,11 @@
       display: flex;
       align-items: center;
       text-decoration: none;
-      height: 44px;
     }
 
-    /*
-      SWAPPABLE: Replace images/logo.png with your actual logo file.
-      Recommended size: any height up to 44px, transparent background.
-      PNG or SVG both work.
-    */
-    .nav-logo img {
-      height: 44px;
-      width: auto;
-      display: block;
+    .nav-logo-img {
+      height: 28px;
+      width: 140px;
       object-fit: contain;
     }
 
@@ -88,14 +85,15 @@
     .nav-links a {
       color: var(--cream-dark);
       text-decoration: none;
+      font-family: 'Lexend Peta', sans-serif;
       font-size: 0.8rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.08em;
-      text-transform: uppercase;
+      text-transform: lowercase;
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--tan); }
+    .nav-links a:hover { color: var(--gold-light); }
 
     .nav-hamburger {
       display: none;
@@ -112,18 +110,21 @@
       width: 24px;
       height: 2px;
       background: var(--cream);
+      transition: all 0.3s;
     }
 
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .nav-hamburger { display: flex; }
+
       .nav-links.open {
         display: flex;
         flex-direction: column;
         position: absolute;
         top: 64px;
-        left: 0; right: 0;
-        background: var(--ink);
+        left: 0;
+        right: 0;
+        background: var(--green-dark);
         padding: 1.5rem 2rem;
         gap: 1.25rem;
         border-bottom: 3px solid var(--red);
@@ -144,105 +145,50 @@
       background: var(--ink-soft);
     }
 
-    /*
-      SWAPPABLE: Replace images/hero.jpg with your actual hero photo.
-      Recommended: landscape, at least 1400px wide. JPG or WebP.
-    */
-    .hero-bg {
+    .hero-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.55;
+      opacity: 0.75;
     }
-
-    /* Checker strips top & bottom */
-    .hero::before, .hero::after {
-      content: '';
-      position: absolute;
-      left: 0; right: 0;
-      height: 14px;
-      z-index: 2;
-      background-image: repeating-conic-gradient(var(--green) 0% 25%, rgba(255,254,247,0.9) 0% 50%);
-      background-size: 14px 14px;
-    }
-    .hero::before { top: 0; }
-    .hero::after  { bottom: 0; }
 
     .hero-content {
       position: relative;
       z-index: 3;
       text-align: center;
       padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
 
-    /*
-      SWAPPABLE: Replace images/hero-lockup.png with your actual brand lockup.
-      This is the logo/title treatment that sits over the hero photo.
-      Recommended: transparent PNG, max width 800px.
-      When you have your final logo treatment, export it as a PNG and drop it in.
-    */
-    .hero-lockup {
-      width: min(680px, 90vw);
-      height: auto;
+    .hero-logo-img {
       display: block;
-      filter: drop-shadow(0 4px 24px rgba(0,0,0,0.5));
+      width: min(480px, 60vw);
+      height: auto;
+      margin: 0 auto 2rem;
+      filter: drop-shadow(0 4px 24px rgba(0,0,0,0.45));
     }
 
     .hero-cta {
-      margin-top: 2.5rem;
+      margin-top: 2rem;
       display: inline-block;
       background: var(--red);
       color: var(--white);
       text-decoration: none;
+      font-family: 'Lexend Peta', sans-serif;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.1em;
-      text-transform: uppercase;
+      text-transform: lowercase;
       padding: 0.85rem 2rem;
       border: 2px solid var(--red);
+      border-radius: 8px;
       transition: all 0.25s;
     }
 
     .hero-cta:hover {
       background: transparent;
       color: var(--white);
-    }
-
-    /* ══════════════════════════════════
-       SHARED SECTION STYLES
-    ══════════════════════════════════ */
-    .section-label {
-      font-family: 'Caveat', cursive;
-      font-size: 1rem;
-      color: var(--red);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      line-height: 1.1;
-      color: var(--ink);
-      margin-bottom: 2.5rem;
-    }
-
-    .fade-up {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     /* ══════════════════════════════════
@@ -256,6 +202,24 @@
     .section-inner {
       max-width: 900px;
       margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Caveat', cursive;
+      font-size: 1rem;
+      color: var(--red);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Lexend Peta', sans-serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 2.5rem;
     }
 
     .what-grid {
@@ -272,15 +236,24 @@
       background: var(--cream);
       padding: 2.5rem;
       border-left: 4px solid var(--green);
+      position: relative;
     }
 
-    .what-card:last-child { border-left-color: var(--red); }
+    .what-card:last-child {
+      border-left-color: var(--red);
+    }
 
-    .what-card-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .what-card-icon-img {
+      width: 120px;
+      height: 120px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: 1rem;
+    }
 
     .what-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
+      font-family: 'Lexend Peta', sans-serif;
+      font-weight: 300;
       font-size: 1.4rem;
       color: var(--ink);
       margin-bottom: 0.75rem;
@@ -291,17 +264,6 @@
       line-height: 1.7;
       color: var(--ink-soft);
     }
-
-    .what-card .repeat-tag {
-      display: inline-block;
-      margin-top: 1rem;
-      font-family: 'Caveat', cursive;
-      font-size: 1rem;
-      color: var(--green);
-      font-weight: 700;
-    }
-
-    .what-card:last-child .repeat-tag { color: var(--red); }
 
     /* ══════════════════════════════════
        MENU
@@ -325,8 +287,8 @@
     }
 
     .menu-section-title {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
+      font-family: 'Lexend Peta', sans-serif;
+      font-weight: 300;
       font-size: 1.5rem;
       color: var(--ink);
       padding-bottom: 0.5rem;
@@ -365,8 +327,8 @@
     .menu-item-left { flex: 1; }
 
     .menu-item-name {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
+      font-family: 'Lexend Peta', sans-serif;
+      font-weight: 300;
       font-size: 1.05rem;
       color: var(--ink);
       margin-bottom: 0.2rem;
@@ -379,8 +341,8 @@
     }
 
     .menu-item-price {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
+      font-family: 'Lexend Peta', sans-serif;
+      font-weight: 300;
       font-size: 1.05rem;
       color: var(--red);
       white-space: nowrap;
@@ -390,7 +352,7 @@
     .menu-divider {
       flex: 1;
       border: none;
-      border-top: 1px dotted var(--tan-dark);
+      border-top: 1px dotted var(--gold-dark);
       margin: 0 0.5rem;
       opacity: 0.5;
       align-self: center;
@@ -400,28 +362,8 @@
        ABOUT
     ══════════════════════════════════ */
     #about {
-      background: var(--ink);
+      background: var(--cream);
       padding: 5rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    #about::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 14px;
-      background-image: repeating-conic-gradient(var(--green) 0% 25%, rgba(255,254,247,0.15) 0% 50%);
-      background-size: 14px 14px;
-    }
-
-    #about::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 14px;
-      background-image: repeating-conic-gradient(var(--green) 0% 25%, rgba(255,254,247,0.15) 0% 50%);
-      background-size: 14px 14px;
     }
 
     .about-inner {
@@ -429,14 +371,13 @@
       margin: 0 auto;
     }
 
-    #about .section-label { color: var(--tan); }
-
-    #about .section-title { color: var(--cream); }
+    #about .section-label { color: var(--green); }
+    #about .section-title { color: var(--ink); }
 
     .about-body p {
       font-size: 1rem;
       line-height: 1.85;
-      color: rgba(253, 244, 216, 0.82);
+      color: var(--ink-soft);
       margin-bottom: 1.25rem;
     }
 
@@ -449,10 +390,11 @@
     }
 
     .about-pull p {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Lexend Peta', sans-serif;
+      font-weight: 300;
       font-style: italic;
       font-size: 1.2rem !important;
-      color: var(--cream) !important;
+      color: var(--ink-soft) !important;
       line-height: 1.6 !important;
     }
 
@@ -460,9 +402,14 @@
        FIND US
     ══════════════════════════════════ */
     #find-us {
-      background: var(--white);
+      background: var(--red-dark);
       padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
     }
+
+    #find-us .section-label { color: var(--gold); }
+    #find-us .section-title { color: var(--white); }
 
     .find-inner {
       max-width: 900px;
@@ -480,32 +427,34 @@
     .find-ig {
       display: inline-block;
       text-decoration: none;
-      color: var(--red);
+      color: var(--white);
       font-weight: 500;
       font-size: 1rem;
-      border: 2px solid var(--red);
+      border: 2px solid var(--white);
+      border-radius: 8px;
       padding: 0.6rem 1.2rem;
       transition: all 0.2s;
       margin-top: 1rem;
     }
 
     .find-ig:hover {
-      background: var(--red);
-      color: var(--white);
+      background: var(--white);
+      color: var(--red-dark);
     }
 
     .popup-card {
-      background: var(--cream);
-      border: 2px solid var(--cream-dark);
-      border-top: 4px solid var(--green);
+      background: rgba(0, 0, 0, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-top: 4px solid var(--gold);
+      border-radius: 8px;
       padding: 1.75rem;
     }
 
     .popup-card h4 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
+      font-family: 'Lexend Peta', sans-serif;
+      font-weight: 300;
       font-size: 1rem;
-      color: var(--ink);
+      color: var(--white);
       text-transform: uppercase;
       letter-spacing: 0.06em;
       margin-bottom: 1rem;
@@ -513,34 +462,34 @@
 
     .popup-event {
       padding: 1rem 0;
-      border-bottom: 1px solid var(--cream-dark);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    .popup-event:last-child { border-bottom: none; }
+    .popup-event:last-of-type { border-bottom: none; }
 
     .popup-date {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
+      font-family: 'Lexend Peta', sans-serif;
+      font-weight: 300;
       font-size: 1.05rem;
-      color: var(--red);
+      color: var(--gold);
       margin-bottom: 0.25rem;
     }
 
     .popup-venue {
       font-weight: 500;
       font-size: 0.9rem;
-      color: var(--ink);
+      color: var(--white);
       margin-bottom: 0.2rem;
     }
 
     .popup-address {
       font-size: 0.8rem;
-      color: var(--ink-soft);
+      color: rgba(255, 255, 255, 0.7);
       line-height: 1.5;
     }
 
     .popup-address a {
-      color: var(--green);
+      color: var(--gold-light);
       text-decoration: none;
     }
 
@@ -550,19 +499,24 @@
       margin-top: 1rem;
       font-size: 0.8rem;
       font-style: italic;
-      color: var(--ink-soft);
+      color: rgba(255, 255, 255, 0.6);
     }
 
     /* ══════════════════════════════════
        EVENTS & CATERING
     ══════════════════════════════════ */
     #catering {
-      background: var(--cream);
+      background: var(--green-dark);
       padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
     }
 
+    #catering .section-label { color: var(--gold); }
+    #catering .section-title { color: var(--cream); }
+
     .catering-inner {
-      max-width: 800px;
+      max-width: 700px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 1.2fr;
@@ -574,22 +528,23 @@
       .catering-inner { grid-template-columns: 1fr; }
     }
 
-    /*
-      SWAPPABLE: Replace images/catering.png with your own graphic.
-      Recommended: square or portrait orientation, any size — it will
-      scale to fill the left column. PNG with transparency works great.
-    */
-    .catering-img {
+    .catering-visual {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    .catering-visual img {
       width: 100%;
       height: auto;
       display: block;
-      object-fit: cover;
+      border-radius: 8px;
     }
 
     .catering-text p {
       font-size: 1rem;
       line-height: 1.75;
-      color: var(--ink-soft);
+      color: var(--white);
       margin-bottom: 1rem;
     }
 
@@ -598,12 +553,14 @@
       background: var(--red);
       color: var(--white);
       text-decoration: none;
+      font-family: 'Lexend Peta', sans-serif;
       font-size: 0.85rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.1em;
-      text-transform: uppercase;
+      text-transform: lowercase;
       padding: 0.85rem 2rem;
       border: 2px solid var(--red);
+      border-radius: 8px;
       transition: all 0.25s;
       cursor: pointer;
     }
@@ -617,7 +574,7 @@
        CONTACT
     ══════════════════════════════════ */
     #contact {
-      background: var(--ink);
+      background: var(--green-dark);
       padding: 5rem 2rem;
     }
 
@@ -626,7 +583,7 @@
       margin: 0 auto;
     }
 
-    #contact .section-label { color: var(--tan); }
+    #contact .section-label { color: var(--gold); }
     #contact .section-title { color: var(--cream); margin-bottom: 2rem; }
 
     .form-field { margin-bottom: 1.25rem; }
@@ -646,6 +603,7 @@
       width: 100%;
       background: rgba(253, 244, 216, 0.07);
       border: 1px solid rgba(253, 244, 216, 0.2);
+      border-radius: 8px;
       color: var(--cream);
       font-family: 'DM Sans', sans-serif;
       font-size: 0.95rem;
@@ -655,7 +613,7 @@
     }
 
     .form-field input:focus,
-    .form-field textarea:focus { border-color: var(--tan); }
+    .form-field textarea:focus { border-color: var(--gold); }
 
     .form-field textarea {
       min-height: 130px;
@@ -667,6 +625,7 @@
       background: var(--red);
       color: var(--white);
       border: 2px solid var(--red);
+      border-radius: 8px;
       font-family: 'DM Sans', sans-serif;
       font-size: 0.85rem;
       font-weight: 500;
@@ -692,7 +651,8 @@
     .form-success .check { font-size: 2rem; margin-bottom: 0.5rem; }
 
     .form-success p {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Lexend Peta', sans-serif;
+      font-weight: 300;
       font-style: italic;
       font-size: 1.2rem;
     }
@@ -717,75 +677,93 @@
       text-decoration: none;
     }
 
-    footer a:hover { color: var(--tan); }
+    footer a:hover { color: var(--gold); }
+
+    /* ══════════════════════════════════
+       ANIMATIONS
+    ══════════════════════════════════ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
   </style>
 </head>
 <body>
 
   <!-- ═══ NAV ═══ -->
   <nav>
-    <a href="#" class="nav-logo">
-      <!--
-        SWAPPABLE LOGO
-        Replace images/logo.png with your actual logo file.
-        Keep height at 44px max. Transparent PNG recommended.
-      -->
-      <img src="images/logo.png" alt="Nonna & Pops" />
+    <a href="#" class="nav-logo" aria-label="Nonna & Pops home">
+      <!-- NAV LOGO: references/logo-nav.svg -->
+      <img src="references/logo-nav.svg" alt="Nonna & Pops" class="nav-logo-img" />
     </a>
     <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="#menu"     onclick="closeNav()">Menu</a></li>
-      <li><a href="#about"    onclick="closeNav()">About Us</a></li>
-      <li><a href="#find-us"  onclick="closeNav()">Find Us</a></li>
+      <li><a href="#menu" onclick="closeNav()">Menu</a></li>
+      <li><a href="#find-us" onclick="closeNav()">Find Us</a></li>
+      <li><a href="#about" onclick="closeNav()">About</a></li>
       <li><a href="#catering" onclick="closeNav()">Events & Catering</a></li>
-      <li><a href="#contact"  onclick="closeNav()">Contact Us</a></li>
+      <li><a href="#contact" onclick="closeNav()">Connect</a></li>
     </ul>
   </nav>
 
   <!-- ═══ HERO ═══ -->
   <section class="hero">
-    <!--
-      SWAPPABLE HERO PHOTO
-      Replace images/hero.jpg with your actual product photo.
-      Landscape, 1400px+ wide recommended.
-    -->
-    <img class="hero-bg" src="images/hero.jpg" alt="" aria-hidden="true" />
-
+    <!-- HERO BACKGROUND: references/hero-bg.jpg -->
+    <img class="hero-img" src="references/hero-bg.jpg" alt="Pizza Fritta with marinara drizzle on checkered deli paper" />
     <div class="hero-content fade-up">
-      <!--
-        SWAPPABLE HERO LOCKUP
-        Replace images/hero-lockup.png with your actual brand title treatment.
-        Transparent PNG. This sits over the hero photo at all times.
-        Max width ~800px, any height.
-      -->
-      <img
-        class="hero-lockup"
-        src="images/hero-lockup.png"
-        alt="Nonna & Pops — Pizza Fritta · Craft Soda · Los Angeles"
-      />
-      <a href="#menu" class="hero-cta">See the Menu</a>
+      <!-- HERO LOGO: references/logo-hero.svg -->
+      <img src="references/logo-hero.svg" alt="Nonna & Pops" class="hero-logo-img" />
+      <a href="#menu" class="hero-cta">our menu</a>
     </div>
   </section>
 
   <!-- ═══ WHAT WE MAKE ═══ -->
   <section id="what-we-make">
     <div class="section-inner">
-      <p class="section-label fade-up">What We Make</p>
-      <h2 class="section-title fade-up">Tried and true.<br>Fresh and new.</h2>
+      <p class="section-label fade-up">We Make</p>
+      <h2 class="section-title fade-up">food worth repeating.</h2>
       <div class="what-grid fade-up">
         <div class="what-card">
-          <div class="what-card-icon">🍕</div>
+          <!-- PIZZA FRITTA ART: references/wemake-fritta.png -->
+          <img src="references/wemake-fritta.png" alt="Pizza Fritta" class="what-card-icon-img" />
           <h3>Pizza Fritta</h3>
-          <p>Neapolitan fried dough — hand-stretched, stuffed with real ingredients, sealed and fried. Personal-sized. Golden outside, gooey inside.</p>
-          <span class="repeat-tag">A tradition worth repeating.</span>
+          <p>Neapolitan fried dough — hand-stretched, stuffed with quality ingredients, and fried to perfection. Nonna approved simplicity.</p>
         </div>
         <div class="what-card">
-          <div class="what-card-icon">🥤</div>
+          <!-- CRAFT SODA ART: references/wemake-soda.png -->
+          <img src="references/wemake-soda.png" alt="Craft Soda" class="what-card-icon-img" />
           <h3>Craft Soda</h3>
-          <p>Made the way it should be: real citrus, real spices, real extractions. No shortcuts. Like a fizzy cocktail for all ages.</p>
-          <span class="repeat-tag">A complexity worth repeating.</span>
+          <p>Made the way it should be: real citrus, spices, and extractions. Absolutely no shortcuts for an all natural taste.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FIND US ═══ -->
+  <section id="find-us">
+    <div class="find-inner">
+      <div class="fade-up">
+        <p class="section-label">Find Us</p>
+        <h2 class="section-title">See you soon.</h2>
+        <a href="https://www.instagram.com/nonnas.la/" target="_blank" rel="noopener" class="find-ig">
+          @nonnas.la &nbsp;↗
+        </a>
+      </div>
+      <div class="fade-up">
+        <div class="popup-card">
+          <h4>Upcoming Pop-Ups</h4>
+          <!-- POPUP EVENTS: loaded from references/popups.csv — shows next 3 entries -->
+          <div id="popup-events-container"></div>
+          <p class="popup-more">More dates coming soon — follow us on Instagram so you don't miss it.</p>
         </div>
       </div>
     </div>
@@ -795,107 +773,17 @@
   <section id="menu">
     <div class="menu-header fade-up">
       <p class="section-label">What We're Serving</p>
-      <h2 class="section-title">The Menu</h2>
+      <h2 class="section-title">Our Menu</h2>
     </div>
-
-    <div class="menu-sections">
-
-      <div class="fade-up">
-        <h3 class="menu-section-title"><span class="dot"></span> Fritta Knots</h3>
-        <div class="menu-items">
-          <div class="menu-item">
-            <div class="menu-item-left">
-              <div class="menu-item-name">Garlic Parmesan Bites</div>
-              <div class="menu-item-desc">Savory fried dough knots finished with herbed garlic butter and parmesan, served with marinara. Impossible to stop at one.</div>
-            </div>
-            <hr class="menu-divider" />
-            <div class="menu-item-price">$6</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="fade-up">
-        <h3 class="menu-section-title"><span class="dot"></span> Pizza Frittas</h3>
-        <div class="menu-items">
-          <div class="menu-item">
-            <div class="menu-item-left">
-              <div class="menu-item-name">Original Cheese Fritta</div>
-              <div class="menu-item-desc">Herbed ricotta, mozzarella, and parmesan stuffed into golden fried dough. The one that started it all.</div>
-            </div>
-            <hr class="menu-divider" />
-            <div class="menu-item-price">$8</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-left">
-              <div class="menu-item-name">Pepperoni Fritta</div>
-              <div class="menu-item-desc">Crispy pepperoni, melted cheese, and herbs sealed inside crispy fried dough. The proper way to serve pepperoni.</div>
-            </div>
-            <hr class="menu-divider" />
-            <div class="menu-item-price">$9</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="fade-up">
-        <h3 class="menu-section-title red-accent"><span class="dot"></span> Dessert</h3>
-        <div class="menu-items">
-          <div class="menu-item">
-            <div class="menu-item-left">
-              <div class="menu-item-name">Nutella Fritta</div>
-              <div class="menu-item-desc">Cream cheese and Nutella folded into warm fried dough. Rich, indulgent, and worth every bite.</div>
-            </div>
-            <hr class="menu-divider" />
-            <div class="menu-item-price">$9</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-left">
-              <div class="menu-item-name">Cinnamon Sugar Bites</div>
-              <div class="menu-item-desc">Fried dough knots tossed in cinnamon sugar and served with vanilla icing. A taste of childhood.</div>
-            </div>
-            <hr class="menu-divider" />
-            <div class="menu-item-price">$6</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="fade-up">
-        <h3 class="menu-section-title"><span class="dot"></span> Craft Sodas</h3>
-        <div class="menu-items">
-          <div class="menu-item">
-            <div class="menu-item-left">
-              <div class="menu-item-name">Earl Grey Cream Pep</div>
-              <div class="menu-item-desc">Botanical, creamy, and lightly spiced. Tea-forward with a smooth finish.</div>
-            </div>
-            <hr class="menu-divider" />
-            <div class="menu-item-price">$6</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-left">
-              <div class="menu-item-name">Juniper Citrus</div>
-              <div class="menu-item-desc">Bright and refreshing with juniper and citrus. Clean and alive.</div>
-            </div>
-            <hr class="menu-divider" />
-            <div class="menu-item-price">$6</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-left">
-              <div class="menu-item-name">Caribbean Coffee Cola</div>
-              <div class="menu-item-desc">Coffee-forward with a hint of lime and molasses depth. Bold and unexpected.</div>
-            </div>
-            <hr class="menu-divider" />
-            <div class="menu-item-price">$6</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
+    <!-- MENU: loaded from references/menu.csv -->
+    <div class="menu-sections" id="menu-sections-container"></div>
   </section>
 
   <!-- ═══ ABOUT ═══ -->
   <section id="about">
     <div class="about-inner">
       <p class="section-label fade-up">About Us</p>
-      <h2 class="section-title fade-up">Good Worth Repeating.</h2>
+      <h2 class="section-title fade-up">A tradition<br>worth carrying forward.</h2>
       <div class="about-body fade-up">
         <p>Nonna & Pops started with two memories and a belief that good food should bring people together — not price them out of it.</p>
         <div class="about-pull">
@@ -908,54 +796,18 @@
     </div>
   </section>
 
-  <!-- ═══ FIND US ═══ -->
-  <section id="find-us">
-    <div class="find-inner">
-      <div class="fade-up">
-        <p class="section-label">Find Us</p>
-        <h2 class="section-title">Come say hello.</h2>
-        <p style="font-size:0.95rem; line-height:1.75; color:var(--ink-soft); margin-bottom:1rem;">Follow along on Instagram for updates, behind-the-scenes, and new pop-up announcements.</p>
-        <a href="https://www.instagram.com/nonnas.la/" target="_blank" rel="noopener" class="find-ig">
-          @nonnas.la &nbsp;↗
-        </a>
-      </div>
-      <div class="fade-up">
-        <div class="popup-card">
-          <h4>Upcoming Pop-Ups</h4>
-          <div class="popup-event">
-            <div class="popup-date">Saturday, May 2 · 5pm–11pm</div>
-            <div class="popup-venue">Brewyard Beer Company Tap House</div>
-            <div class="popup-address">
-              <a href="https://www.google.com/maps/place/906+Western+Ave,+Glendale,+CA+91201" target="_blank" rel="noopener">
-                906 Western Avenue<br>Glendale, CA 91201
-              </a>
-            </div>
-          </div>
-          <p class="popup-more">More dates coming soon — follow us on Instagram so you don't miss it.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══ EVENTS & CATERING ═══ -->
   <section id="catering">
     <div class="catering-inner">
-      <!--
-        SWAPPABLE CATERING GRAPHIC
-        Replace images/catering.png with your own artwork or photo.
-        PNG or JPG. Will scale to fill the left column.
-      -->
-      <img
-        class="catering-img fade-up"
-        src="images/catering.png"
-        alt="Have Nonna for a Visit — Private events and gatherings"
-      />
+      <div class="catering-visual fade-up">
+        <!-- CATERING IMAGE: references/catering.jpg -->
+        <img src="references/catering.jpg" alt="Catering" />
+      </div>
       <div class="catering-text fade-up">
         <p class="section-label">Events & Catering</p>
-        <h2 class="section-title" style="font-size:1.8rem; margin-bottom:1rem;">Hosting a party, block party, or private event?</h2>
-        <p>We bring the fried goods and refreshing drinks that are perfect for wandering around. Nonna & Pops is available for private events and gatherings.</p>
-        <p>Get in touch and tell us what you're planning.</p>
-        <a href="#contact" class="btn-primary">Contact Us →</a>
+        <h2 class="section-title" style="font-size:1.8rem; margin-bottom:1rem;">Hosting a get-together, block party, or private event?</h2>
+        <p>Our fried foods and refreshing drinks are available for your next event. Get in touch and tell us what you're planning!</p>
+        <a href="#contact" class="btn-primary">contact us →</a>
       </div>
     </div>
   </section>
@@ -992,15 +844,132 @@
     <p>© 2026 Nonna & Pops, LLC &nbsp;·&nbsp; Los Angeles, CA &nbsp;·&nbsp; <a href="mailto:Hello@nonnapops.com">Hello@nonnapops.com</a></p>
   </footer>
 
+  <!-- ═══ SCRIPTS ═══ -->
   <script>
-    function toggleNav() {
-      document.getElementById('nav-links').classList.toggle('open');
-    }
-    function closeNav() {
-      document.getElementById('nav-links').classList.remove('open');
+
+    // ── CSV PARSER ──────────────────────────────────────────────
+    function parseCSV(text) {
+      const lines = text.trim().split('\n');
+      const headers = lines[0].split(',').map(h => h.trim());
+      return lines.slice(1).map(line => {
+        // Handle quoted fields (commas inside quotes)
+        const fields = [];
+        let current = '';
+        let inQuotes = false;
+        for (let i = 0; i < line.length; i++) {
+          const ch = line[i];
+          if (ch === '"') {
+            inQuotes = !inQuotes;
+          } else if (ch === ',' && !inQuotes) {
+            fields.push(current.trim());
+            current = '';
+          } else {
+            current += ch;
+          }
+        }
+        fields.push(current.trim());
+        const obj = {};
+        headers.forEach((h, i) => obj[h] = fields[i] || '');
+        return obj;
+      });
     }
 
-    // Scroll animations
+    // ── LOAD MENU FROM CSV ──────────────────────────────────────
+    // Dessert category gets the red accent treatment
+    const RED_ACCENT_CATEGORIES = ['Dessert'];
+
+    async function loadMenu() {
+      try {
+        const res = await fetch('references/menu.csv');
+        const text = await res.text();
+        const rows = parseCSV(text);
+
+        // Group by Category, preserving order of first appearance
+        const categoryOrder = [];
+        const grouped = {};
+        rows.forEach(row => {
+          if (!grouped[row.Category]) {
+            grouped[row.Category] = [];
+            categoryOrder.push(row.Category);
+          }
+          grouped[row.Category].push(row);
+        });
+
+        const container = document.getElementById('menu-sections-container');
+        container.innerHTML = '';
+
+        categoryOrder.forEach(cat => {
+          const isRed = RED_ACCENT_CATEGORIES.includes(cat);
+          const section = document.createElement('div');
+          section.className = 'fade-up';
+
+          const titleClass = isRed ? 'menu-section-title red-accent' : 'menu-section-title';
+          let html = `<h3 class="${titleClass}"><span class="dot"></span> ${cat}</h3><div class="menu-items">`;
+
+          grouped[cat].forEach(item => {
+            html += `
+              <div class="menu-item">
+                <div class="menu-item-left">
+                  <div class="menu-item-name">${item.Item}</div>
+                  <div class="menu-item-desc">${item.Description}</div>
+                </div>
+                <hr class="menu-divider" />
+                <div class="menu-item-price">$${item.Price}</div>
+              </div>`;
+          });
+
+          html += '</div>';
+          section.innerHTML = html;
+          container.appendChild(section);
+        });
+
+        // Re-observe new fade-up elements
+        container.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+      } catch (err) {
+        console.error('Could not load menu.csv', err);
+      }
+    }
+
+    // ── LOAD POP-UPS FROM CSV ───────────────────────────────────
+    async function loadPopups() {
+      try {
+        const res = await fetch('references/popups.csv');
+        const text = await res.text();
+        const rows = parseCSV(text);
+        const container = document.getElementById('popup-events-container');
+        container.innerHTML = '';
+
+        // Show only the next 3 events
+        const upcoming = rows.slice(0, 3);
+
+        if (upcoming.length === 0) {
+          container.innerHTML = '<p class="popup-more" style="margin-top:0;">No upcoming events scheduled yet.</p>';
+          return;
+        }
+
+        upcoming.forEach(event => {
+          const mapsQuery = encodeURIComponent(event.Address);
+          const dateDisplay = `${event.Date} · ${event.StartTime}–${event.EndTime}`;
+          const div = document.createElement('div');
+          div.className = 'popup-event';
+          div.innerHTML = `
+            <div class="popup-date">${dateDisplay}</div>
+            <div class="popup-venue">${event.Location}</div>
+            <div class="popup-address">
+              <a href="https://www.google.com/maps/search/?api=1&query=${mapsQuery}" target="_blank" rel="noopener">
+                ${event.Address.replace(', ', '<br>')}
+              </a>
+            </div>`;
+          container.appendChild(div);
+        });
+
+      } catch (err) {
+        console.error('Could not load popups.csv', err);
+      }
+    }
+
+    // ── SCROLL ANIMATIONS ───────────────────────────────────────
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -1008,9 +977,19 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Trigger hero immediately
     document.querySelector('.hero .fade-up').classList.add('visible');
 
-    // Contact form — mailto (no backend needed)
+    // ── MOBILE NAV ──────────────────────────────────────────────
+    function toggleNav() {
+      document.getElementById('nav-links').classList.toggle('open');
+    }
+    function closeNav() {
+      document.getElementById('nav-links').classList.remove('open');
+    }
+
+    // ── CONTACT FORM ────────────────────────────────────────────
     function submitForm(e) {
       e.preventDefault();
       const name    = document.getElementById('name').value;
@@ -1022,6 +1001,11 @@
       document.getElementById('contact-form').style.display = 'none';
       document.getElementById('form-success').style.display = 'block';
     }
+
+    // ── INIT ────────────────────────────────────────────────────
+    loadMenu();
+    loadPopups();
+
   </script>
 
 </body>
