@@ -934,6 +934,31 @@
     }
 
     // ── LOAD POP-UPS FROM CSV ───────────────────────────────────
+    // Dates in the CSV have no year (e.g. "Sat, Aug 15 ") — infer the
+    // correct year, then filter to today-or-later and sort chronologically
+    // before taking the next 3. This avoids just grabbing the first 3 rows
+    // in file order, which breaks once any event date has passed.
+    function parseEventDate(dateStr) {
+      const cleaned = dateStr.trim();
+      const commaIndex = cleaned.indexOf(',');
+      const monthDay = (commaIndex >= 0 ? cleaned.slice(commaIndex + 1) : cleaned).trim();
+
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+      let eventDate = new Date(`${monthDay} ${now.getFullYear()}`);
+      if (isNaN(eventDate)) return null;
+
+      // If the parsed date is more than ~300 days in the past, it's almost
+      // certainly next year's occurrence (e.g. a December date read in January)
+      const diffDays = (today - eventDate) / (1000 * 60 * 60 * 24);
+      if (diffDays > 300) {
+        eventDate = new Date(`${monthDay} ${now.getFullYear() + 1}`);
+      }
+
+      return eventDate;
+    }
+
     async function loadPopups() {
       try {
         const res = await fetch('references/popups.csv');
@@ -942,8 +967,15 @@
         const container = document.getElementById('popup-events-container');
         container.innerHTML = '';
 
-        // Show only the next 3 events
-        const upcoming = rows.slice(0, 3);
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+        // Attach parsed dates, drop unparseable/past events, sort chronologically
+        const upcoming = rows
+          .map(row => ({ ...row, _parsedDate: parseEventDate(row.Date) }))
+          .filter(row => row._parsedDate && row._parsedDate >= today)
+          .sort((a, b) => a._parsedDate - b._parsedDate)
+          .slice(0, 3);
 
         if (upcoming.length === 0) {
           container.innerHTML = '<p class="popup-more" style="margin-top:0;">No upcoming events scheduled yet.</p>';
