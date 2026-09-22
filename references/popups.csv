@@ -1,16 +1,33 @@
-Date,StartTime,EndTime,Location,Address
-"Thu, Aug 6 ",4:00 p,9:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201"
-"Sat, Aug 8 ",5:00 p,10:00 p,818 Night Market,"14941 Devonshire St, Mission Hills, CA 91345"
-"Sun, Aug 9 ",12:00 p,6:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201"
-"Thu, Aug 13 ",5:30 a,9:30 a,Glendale Tap,"4227 San Fernando Rd, Glendale, CA  91204"
-"Sat, Aug 15 ",5:00 p,10:00 p,818 Night Market,"14941 Devonshire St, Mission Hills, CA 91345"
-"Sun, Aug 16 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401"
-"Thu, Aug 20 ",4:00 p,9:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201"
-"Sat, Aug 22 ",5:00 p,10:00 p,818 Night Market,"14941 Devonshire St, Mission Hills, CA 91345"
-"Sun, Aug 23 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401"
-"Thu, Aug 27 ",5:30 a,9:30 a,Glendale Tap,"4227 San Fernando Rd, Glendale, CA  91204"
-"Sat, Aug 29 ",5:00 p,11:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201"
-"Sun, Aug 30 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401"
-"Fri, Sep 11 ",,,Glendale Tap,"4227 San Fernando Rd, Glendale, CA  91204"
-"Tue, Sep 15 ",,,El Grito,
-"Sun, Oct 4 ",,,LA Italian Festival,
+Date,StartTime,EndTime,Location,Address,Instagram
+"Thu, Aug 6 ",4:00 p,9:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201",@brewyardbeerco
+"Sat, Aug 8 ",5:00 p,10:00 p,818 Night Market,"14941 Devonshire St, Mission Hills, CA 91345",@the818nightmarket
+"Sun, Aug 9 ",12:00 p,6:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201",@brewyardbeerco
+"Thu, Aug 13 ",5:30 a,9:30 a,Glendale Tap,"4227 San Fernando Rd, Glendale, CA  91204",@glendaletap
+"Sat, Aug 15 ",5:00 p,10:00 p,818 Night Market,"14941 Devonshire St, Mission Hills, CA 91345",@the818nightmarket
+"Sun, Aug 16 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401",@goodtimes_farmersmarket
+"Thu, Aug 20 ",4:00 p,9:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201",@brewyardbeerco
+"Sat, Aug 22 ",5:00 p,10:00 p,818 Night Market,"14941 Devonshire St, Mission Hills, CA 91345",@the818nightmarket
+"Sun, Aug 23 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401",@goodtimes_farmersmarket
+"Thu, Aug 27 ",5:30 a,9:30 a,Glendale Tap,"4227 San Fernando Rd, Glendale, CA  91204",@glendaletap
+"Sat, Aug 29 ",5:00 p,11:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201",@brewyardbeerco
+"Sun, Aug 30 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401",@goodtimes_farmersmarket
+"Fri, Sep 11 ",6:00 p,10:00 p,Glendale Tap,"4227 San Fernando Rd, Glendale, CA  91204",@glendaletap
+"Tue, Sep 15 ",5:00 p,10:00 p,El Grito,,
+"Thu, Sep 17 ",6:00 p,10:00 p,Glendale Tap,"4227 San Fernando Rd, Glendale, CA  91204",@glendaletap
+"Sat, Sep 19 ",5:00 p,10:00 p,818 Night Market,"14941 Devonshire St, Mission Hills, CA 91345",@the818nightmarket
+"Sun, Sep 20 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401",@goodtimes_farmersmarket
+"Thu, Sep 24 ",6:00 p,10:00 p,Glendale Tap,"4227 San Fernando Rd, Glendale, CA  91204",@glendaletap
+"Fri, Sep 25 ",5:00 p,11:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201",@brewyardbeerco
+"Sun, Sep 27 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401",@goodtimes_farmersmarket
+"Thu, Oct 1 ",5:00 p,11:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201",@brewyardbeerco
+"Sun, Oct 4 ",2:00 p,10:00 p,LA Italian Festival,"1651 N Highland Ave, Hollywood, CA 90028",@laitalianfest
+"Fri, Oct 9 ",4:00 p,9:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201",@brewyardbeerco
+"Sat, Oct 10 ",5:00 p,10:00 p,818 Night Market,"14941 Devonshire St, Mission Hills, CA 91345",@the818nightmarket
+"Sun, Oct 11 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401",@goodtimes_farmersmarket
+"Sat, Oct 17 ",5:00 p,10:00 p,818 Night Market,"14941 Devonshire St, Mission Hills, CA 91345",@the818nightmarket
+"Sun, Oct 18 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401",@goodtimes_farmersmarket
+"Sat, Oct 24 ",5:00 p,11:00 p,Brewyard Beer Company,"906 Western Ave, Glendale, CA 91201",@brewyardbeerco
+"Sun, Oct 25 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401",@goodtimes_farmersmarket
+"Fri, Oct 30 ",6:00 p,10:00 p,Glendale Tap,"4227 San Fernando Rd, Glendale, CA  91204",@glendaletap
+"Sat, Oct 31 ",5:00 p,10:00 p,818 Night Market,"14941 Devonshire St, Mission Hills, CA 91345",@the818nightmarket
+"Sun, Nov 1 ",9:00 a,2:00 p,Good Times Farmers Market,"5800 Fulton Ave, Valley Glen, CA 91401",@goodtimes_farmersmarket
